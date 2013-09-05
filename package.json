@@ -1,9 +1,0 @@
-{
-  "name": "plate",
-  "description": "The problem-situation buffet",
-  "version": "0.0.1",
-  "private": true,
-  "dependencies": {
-    "express": "3.3.8"
-  }
-}
