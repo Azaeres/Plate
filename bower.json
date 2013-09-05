@@ -1,0 +1,22 @@
+{
+  "name": "plate",
+  "version": "0.0.1",
+  "homepage": "https://github.com/ryancbarry/Plate",
+  "authors": [
+    "ryanb@fullscreen.net"
+  ],
+  "description": "The problem-situation buffet",
+  "main": "app.js",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "requirejs": "2.1.8"
+  }
+}
