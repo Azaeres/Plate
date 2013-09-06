@@ -8,5 +8,5 @@ define([
 		}
 	});
 
-	return new Plate();
+	return Plate;
 });

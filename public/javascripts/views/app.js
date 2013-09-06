@@ -5,7 +5,9 @@ define([
 	"text!javascripts/views/templates/app.ejs",
 	"ejs",
 	"javascripts/models/plate"
-], function($, _, Backbone, template, EJS, plate) {
+], function($, _, Backbone, template, EJS, Plate) {
+
+	var plate = new Plate();
 
 	var App = Backbone.View.extend({
 		el: 'body',
