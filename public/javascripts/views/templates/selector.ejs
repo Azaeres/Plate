@@ -1,0 +1,8 @@
+Plates:
+<select class="js-selector">
+	<% if (length) { %>
+    <% models.forEach(function(plate) { %>
+      <option value="<%= plate.get('id') %>"><%= plate.get('name') %></option>
+    <% }) %>
+	<% } %>
+</select>

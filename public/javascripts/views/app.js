@@ -9,25 +9,33 @@ define([
 	"javascripts/views/selector"
 ], function($, _, Backbone, Bootstrap, template, EJS, Plates, Selector) {
 
-	var plate = new Plate();
+	var plates = new Plates();
 
 	var App = Backbone.View.extend({
 		el: 'body',
 		initialize: function() {
-			var that = this;
-			that.$el = $(that.el);
-			that.render();
+			this.$el = $(this.el);
+			this.render();
 		},
 		events: {
 			"click div": "handleClick"
 		},
 		handleClick: function() {
-			console.log('saving...');
-			plate.fetch();
+			console.log('fetching...');
+			plates.fetch({
+				success: function(collection, response, options) {
+					console.log('fetched', plates.toJSON());
+				},
+				error: function(collection, response, options) {
+					console.log('fetched', arguments);
+				}
+			});
 		},
 		render: function() {
-			var html = EJS.render(template, { title:'Foo' });
+			var html = EJS.render(template, { title:'Plate' });
 			this.$el.html(html);
+
+			var selector = new Selector({ el:".selector" });
 
 			return this;
 		}
