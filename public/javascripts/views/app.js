@@ -1,25 +1,27 @@
 define([
 	'jquery',
+	"underscore",
 	'backbone',
 	"text!javascripts/views/templates/app.ejs",
-	"ejs"
-], function($, Backbone, template, EJS) {
+	"ejs",
+	"javascripts/models/plate"
+], function($, _, Backbone, template, EJS, plate) {
 
 	var App = Backbone.View.extend({
 		el: 'body',
 		initialize: function() {
-			this.$el = $(this.el);
-			this.render();
+			var that = this;
+			that.$el = $(that.el);
+			that.render();
 		},
 		events: {
 			"click div": "handleClick"
 		},
 		handleClick: function() {
-			console.log('click');
+			console.log('saving...');
+			plate.save();
 		},
 		render: function() {
-			console.log('rendering...');
-
 			var html = EJS.render(template, { title:'Foo' });
 			this.$el.html(html);
 
