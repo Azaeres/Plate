@@ -6,7 +6,8 @@ require.config({
 		"underscore": "underscore-amd/underscore",
 		"backbone": "backbone-amd/backbone",
 		"text": "requirejs-text/text",
-		"ejs": "ejs/ejs"
+		"ejs": "ejs/ejs",
+		"bootstrap": "bootstrap/dist/js/bootstrap.min"
 	},
 	shim: {
 		"ejs": {

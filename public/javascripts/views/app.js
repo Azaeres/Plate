@@ -2,10 +2,12 @@ define([
 	'jquery',
 	"underscore",
 	'backbone',
+	"bootstrap",
 	"text!javascripts/views/templates/app.ejs",
 	"ejs",
-	"javascripts/models/plate"
-], function($, _, Backbone, template, EJS, Plate) {
+	"javascripts/models/plates",
+	"javascripts/views/selector"
+], function($, _, Backbone, Bootstrap, template, EJS, Plates, Selector) {
 
 	var plate = new Plate();
 
