@@ -1,5 +1,5 @@
 {
-  "name": "plate",
+  "name": "Plate",
   "version": "0.0.1",
   "homepage": "https://github.com/ryancbarry/Plate",
   "authors": [
@@ -17,6 +17,11 @@
     "tests"
   ],
   "dependencies": {
-    "requirejs": "2.1.8"
+    "requirejs": null,
+    "requirejs-text": null,
+    "ejs": null,
+    "jquery": null,
+    "underscore-amd": null,
+    "backbone-amd": null
   }
 }
