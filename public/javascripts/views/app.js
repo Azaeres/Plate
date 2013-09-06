@@ -19,7 +19,7 @@ define([
 		},
 		handleClick: function() {
 			console.log('saving...');
-			plate.save();
+			plate.fetch();
 		},
 		render: function() {
 			var html = EJS.render(template, { title:'Foo' });

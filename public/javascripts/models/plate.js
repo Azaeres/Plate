@@ -1,9 +1,6 @@
 define([
-	"underscore",
 	'backbone',
-], function(_, Backbone) {
-	console.log('model', arguments);
-
+], function(Backbone) {
 	var Plate = Backbone.Model.extend({
 		url: '/plates',
 		initialize: function() {
@@ -11,7 +8,5 @@ define([
 		}
 	});
 
-	var plate = new Plate();
-
-	return plate;
+	return new Plate();
 });
