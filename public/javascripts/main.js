@@ -12,6 +12,9 @@ require.config({
 	shim: {
 		"ejs": {
 			exports: "ejs"
+		},
+		"bootstrap": {
+			deps: ['jquery']
 		}
 	}
 });

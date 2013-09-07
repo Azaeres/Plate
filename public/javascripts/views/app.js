@@ -18,7 +18,7 @@ define([
 			this.render();
 		},
 		events: {
-			"click div": "handleClick"
+			"click div.app": "handleClick"
 		},
 		handleClick: function() {
 			console.log('fetching...');

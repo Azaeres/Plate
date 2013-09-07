@@ -4,8 +4,9 @@ define([
 	"backbone",
 	"text!javascripts/views/templates/selector.ejs",
 	"ejs",
-	"javascripts/models/plates"
-], function($, _, Backbone, template, EJS, Plates) {
+	"javascripts/models/plates",
+	"javascripts/views/plate"
+], function($, _, Backbone, template, EJS, Plates, PlateView) {
 
 	var plates = new Plates();
 
@@ -28,6 +29,9 @@ define([
 					console.log('plates json:', plates);
 					var html = EJS.render(template, plates);
 					that.$el.html(html);
+					// that.$el.find('option').each(function(i, val) {
+					// 	$(val).data(plates.models[i].toJSON());
+					// });
 				},
 				error: function() {
 					console.log('error fetching plates');
@@ -35,7 +39,14 @@ define([
 			});
 		},
 		select: function(e) {
-			console.log('select', $(e.target).val());
+			// var $select = $(e.target).parent();
+			var optionId = $(e.target).val();
+			// var $option = $select.find('option[value="'+optionId+'"]');
+			// var data = $option.data();
+
+			var m = plates.get(optionId);
+			console.log(optionId, plates, m);
+			var plateView = new PlateView({ el:".plate-view", model:m });
 		}
 	});
 
