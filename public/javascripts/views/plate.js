@@ -8,12 +8,10 @@ define([
 ], function($, _, Backbone, template, EJS, Plate) {
 
 	var PlateView = Backbone.View.extend({
-		initialize: function() {
-			this.render();
-		},
 		render: function() {
 			var html = EJS.render(template, this.model.toJSON());
 			this.$el.html(html);
+			return this;
 		}
 	});
 

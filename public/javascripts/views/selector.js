@@ -10,15 +10,7 @@ define([
 
 	var plates = new Plates();
 
-	console.log('selector view', plates);
-
 	var Selector = Backbone.View.extend({
-		initialize: function() {
-			_.bindAll(this, 'select');
-			this.$el = $(this.el);
-			this.render();
-			console.log('rendered selector');
-		},
 		events: {
 			"change select.js-selector": "select"
 		},
@@ -26,27 +18,22 @@ define([
 			var that = this;
 			plates.fetch({
 				success: function() {
-					console.log('plates json:', plates);
+					console.log('> plates', plates.toJSON());
 					var html = EJS.render(template, plates);
 					that.$el.html(html);
-					// that.$el.find('option').each(function(i, val) {
-					// 	$(val).data(plates.models[i].toJSON());
-					// });
+					that.select();
 				},
 				error: function() {
-					console.log('error fetching plates');
+					console.log('error fetching plates', arguments);
 				}
 			});
+
+			return this;
 		},
 		select: function(e) {
-			// var $select = $(e.target).parent();
-			var optionId = $(e.target).val();
-			// var $option = $select.find('option[value="'+optionId+'"]');
-			// var data = $option.data();
-
+			var optionId = this.$el.find('.js-selector').val();
 			var m = plates.get(optionId);
-			console.log(optionId, plates, m);
-			var plateView = new PlateView({ el:".plate-view", model:m });
+			var plateView = new PlateView({ el:".plate-view", model:m }).render();
 		}
 	});
 
