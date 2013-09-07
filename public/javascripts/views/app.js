@@ -6,8 +6,10 @@ define([
 	"text!javascripts/views/templates/app.ejs",
 	"ejs",
 	"javascripts/models/plates",
-	"javascripts/views/selector"
-], function($, _, Backbone, Bootstrap, template, EJS, Plates, Selector) {
+	"javascripts/views/selector",
+	"javascripts/models/problems",
+	"javascripts/views/problems"
+], function($, _, Backbone, Bootstrap, template, EJS, Plates, SelectorView, Problems, ProblemsView) {
 
 	var plates = new Plates();
 
@@ -17,7 +19,16 @@ define([
 			var html = EJS.render(template, { title:'Plate' });
 			this.$el.html(html);
 
-			var selector = new Selector({ el:".selector" }).render();
+			new SelectorView({ el:".selector-view" }).render();
+			var m = new Problems();
+			m.fetch({
+				success: function() {
+					new ProblemsView({ el:".problems-view", model:m }).render();
+				},
+				error: function() {
+
+				}
+			});
 
 			return this;
 		}

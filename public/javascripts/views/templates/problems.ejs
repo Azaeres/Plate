@@ -1,0 +1,12 @@
+<div class="js-problems">
+	<h2>Problems</h2>
+	<ul>
+		<% if (length) { %>
+	    <% models.forEach(function(problem) { %>
+	      <li><%= problem.get('name') %>
+	      	<p><%= problem.get('description') %></p>
+	      </li>
+	    <% }) %>
+		<% } %>
+	</ul>
+</div>
