@@ -4,35 +4,39 @@ define([
 	'backbone',
 	"bootstrap",
 	"text!javascripts/views/templates/app.ejs",
-	"ejs",
-	"javascripts/models/plates",
 	"javascripts/views/selector",
-	"javascripts/models/problems",
-	"javascripts/views/problems"
-], function($, _, Backbone, Bootstrap, template, EJS, Plates, SelectorView, Problems, ProblemsView) {
+	"javascripts/views/problems",
+	"javascripts/views/nested-view.js",
+  "javascripts/models/app"
+], function($, _, Backbone, Bootstrap, template, SelectorView, ProblemsView, NestedView, App) {
 
-	var plates = new Plates();
-
-	var App = Backbone.View.extend({
-		el: 'body',
-		render: function() {
-			var html = EJS.render(template, { title:'Plate' });
-			this.$el.html(html);
-
-			new SelectorView({ el:".selector-view" }).render();
-			var m = new Problems();
-			m.fetch({
-				success: function() {
-					new ProblemsView({ el:".problems-view", model:m }).render();
-				},
-				error: function() {
-
-				}
-			});
-
-			return this;
-		}
+	var AppView = NestedView.extend({
+		context: NestedView.context,
+		template: template
 	});
 
-	return App;
+	// var AppView = Backbone.View.extend({
+	// 	el: 'body',
+	// 	render: function() {
+	// 		// var html = EJS.render(template, {
+	// 		// 	title: 'Plate',
+	// 		// 	selectorView: new SelectorView({ el:".selector-view" })
+	// 		// });
+
+	// 		var html = _.template(template, { title:'Plate', f:function() {
+	// 			console.log('yey');
+	// 		}});
+	// 		this.$el.html(html);
+
+	// 		// new SelectorView({ el:".selector-view" }).render();
+
+	// 		// App.problems.on('sync', function() {
+	// 		// 	new ProblemsView({ el:".problems-view", model:App.problems }).render();
+	// 		// }).fetch();
+
+	// 		return this;
+	// 	}
+	// });
+
+	return AppView;
 });

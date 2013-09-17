@@ -23,6 +23,7 @@
     "jquery": null,
     "underscore-amd": null,
     "backbone-amd": null,
-    "bootstrap": null
+    "bootstrap": null,
+    "json3": null
   }
 }
